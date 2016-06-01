@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MyWebDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Log">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="AddDate" Type="DateTime" Precision="3" />
+    <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__Log__UserId__1CF15040" FromRole="Log" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Level" Type="Int32" />
+    <NavigationProperty Name="Roles1" Relationship="Self.FK_Roles_Roles" FromRole="Roles" ToRole="Roles1" />
+    <NavigationProperty Name="Roles2" Relationship="Self.FK_Roles_Roles" FromRole="Roles1" ToRole="Roles" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Users_Roles" FromRole="Roles" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Types">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Value" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Types1" Relationship="Self.FK_Types_Types" FromRole="Types" ToRole="Types1" />
+    <NavigationProperty Name="Types2" Relationship="Self.FK_Types_Types" FromRole="Types1" ToRole="Types" />
+    <NavigationProperty Name="UserInfo" Relationship="Self.FK_UserInfo_Types" FromRole="Types" ToRole="UserInfo" />
+  </EntityType>
+  <EntityType Name="UserInfo">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="NickName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="RealName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Sex" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="BirthDay" Type="DateTime" Precision="0" />
+    <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="QQ" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="Job" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="About" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FavoriteBook" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FavoriteMusic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Constellation" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Types" Relationship="Self.FK_UserInfo_Types" FromRole="UserInfo" ToRole="Types" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__UserInfo__UserId__117F9D94" FromRole="UserInfo" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserLoginName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserLoginPwd" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Role" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Log" Relationship="Self.FK__Log__UserId__1CF15040" FromRole="Users" ToRole="Log" />
+    <NavigationProperty Name="Roles" Relationship="Self.FK_Users_Roles" FromRole="Users" ToRole="Roles" />
+    <NavigationProperty Name="UserInfo" Relationship="Self.FK__UserInfo__UserId__117F9D94" FromRole="Users" ToRole="UserInfo" />
+    <NavigationProperty Name="MessageBoard" Relationship="MyWebDBModel.FK__MessageBo__BeFro__29572725" FromRole="Users" ToRole="MessageBoard" />
+    <NavigationProperty Name="MessageBoard1" Relationship="MyWebDBModel.FK__MessageBo__UserI__286302EC" FromRole="Users" ToRole="MessageBoard" />
+  </EntityType>
+  <Association Name="FK__Log__UserId__1CF15040">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="Log" Type="Self.Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Log">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Roles_Roles">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+    <End Role="Roles1" Type="Self.Roles" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Roles1">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Roles">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="Role" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Types_Types">
+    <End Role="Types" Type="Self.Types" Multiplicity="1" />
+    <End Role="Types1" Type="Self.Types" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Types">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Types1">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfo_Types">
+    <End Role="Types" Type="Self.Types" Multiplicity="1" />
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Types">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="UserInfo">
+        <PropertyRef Name="Constellation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserInfo__UserId__117F9D94">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="UserInfo">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MyWebDBEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Log" EntityType="Self.Log" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" />
+    <EntitySet Name="Types" EntityType="Self.Types" />
+    <EntitySet Name="UserInfo" EntityType="Self.UserInfo" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <AssociationSet Name="FK__Log__UserId__1CF15040" Association="Self.FK__Log__UserId__1CF15040">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Log" EntitySet="Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Roles_Roles" Association="Self.FK_Roles_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Roles1" EntitySet="Roles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Types_Types" Association="Self.FK_Types_Types">
+      <End Role="Types" EntitySet="Types" />
+      <End Role="Types1" EntitySet="Types" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfo_Types" Association="Self.FK_UserInfo_Types">
+      <End Role="Types" EntitySet="Types" />
+      <End Role="UserInfo" EntitySet="UserInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserInfo__UserId__117F9D94" Association="Self.FK__UserInfo__UserId__117F9D94">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserInfo" EntitySet="UserInfo" />
+    </AssociationSet>
+    <EntitySet Name="MessageBoard" EntityType="MyWebDBModel.MessageBoard" />
+    <EntitySet Name="sysdiagrams" EntityType="MyWebDBModel.sysdiagrams" />
+    <AssociationSet Name="FK__MessageBo__BeFro__29572725" Association="MyWebDBModel.FK__MessageBo__BeFro__29572725">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="MessageBoard" EntitySet="MessageBoard" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MessageBo__UserI__286302EC" Association="MyWebDBModel.FK__MessageBo__UserI__286302EC">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="MessageBoard" EntitySet="MessageBoard" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="MessageBoard">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="BeFromUser" Type="Int32" />
+    <Property Name="IsPublic" Type="Boolean" />
+    <Property Name="LeveaTime" Type="DateTime" Precision="3" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Users" Relationship="MyWebDBModel.FK__MessageBo__BeFro__29572725" FromRole="MessageBoard" ToRole="Users" />
+    <NavigationProperty Name="Users1" Relationship="MyWebDBModel.FK__MessageBo__UserI__286302EC" FromRole="MessageBoard" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK__MessageBo__BeFro__29572725">
+    <End Type="MyWebDBModel.Users" Role="Users" Multiplicity="0..1" />
+    <End Type="MyWebDBModel.MessageBoard" Role="MessageBoard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="MessageBoard">
+        <PropertyRef Name="BeFromUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MessageBo__UserI__286302EC">
+    <End Type="MyWebDBModel.Users" Role="Users" Multiplicity="0..1" />
+    <End Type="MyWebDBModel.MessageBoard" Role="MessageBoard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="MessageBoard">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

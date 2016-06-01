@@ -1,0 +1,29 @@
+﻿p{color: #fff;}  
+    .bubble{  
+        padding: 30px 20px;  
+        margin: 60px;  
+        background: #ce5010;  
+        position: relative;  
+        border-radius: 10px;  
+    }  
+    .bubble span{  
+        width: 0;  
+        height: 0;  
+        font-size: 0;  
+        overflow: hidden;  
+        position: absolute;  
+    }  
+    .bubble span.bot{  
+        border-width: 20px;  
+        border-style: solid;  
+        border-color: transparent #ce5010 #ce5010 transparent;  
+        left: -40px;  
+        top: 40px;  
+    }  
+    .bubble span.top{  
+        border-width: 10px 20px;  
+        border-style:  solid;  
+        border-color: transparent #fff #fff transparent;  
+        left: -40px;  
+        top: 60px;  
+    }  

@@ -1,0 +1,156 @@
+﻿@{
+    ViewBag.Title = "唠叨唠叨";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+@{
+    string[] users = ViewBag.Users as string[];
+}
+<link href="~/Content/css/ty.css" rel="stylesheet" />
+<style type="text/css">
+    .frm_msg {
+        border: none;
+    }
+
+    #main {
+        width: 1000px;
+        height: 600px;
+        margin: auto;
+    }
+
+    #main_left {
+        float: left;
+        width: 600px;
+    }
+
+        #main_left div {
+            margin: 15px;
+        }
+
+    #main_right {
+        margin: 15px;
+        min-width: 300px;
+        height:100%;
+        border: 1px solid gray;
+        float: left;
+    }
+
+        #main_right * {
+            margin: 15px;
+        }
+
+    #btn_sendmsg {
+        color:white;
+        width: 100px;
+        height: 30px;
+        background-color: #5EA51B;
+        border: 1px solid #dedede;
+        -moz-border-radius: 5px; /* Gecko browsers */
+        -webkit-border-radius: 5px; /* Webkit browsers */
+        border-radius: 5px; /* W3C syntax */
+    }
+
+    .div_div {
+        height: 335px;
+    }
+
+    .txt_msg {
+        font-size: 14px;
+    }
+</style>
+<h1 class="t_nav"><span id="writelog">说说那些~！</span><a href="/Home/Index" class="n1">网站首页</a><a href="/Log/Index" class="n2">个人日记</a></h1>
+<div style="margin:auto;margin-top:20px;width:300px;color:red;">
+    @ViewBag.Error
+</div>
+<div id="main">
+    <div id="main_left">
+        <div class="div_div">
+            <div id="txt_accept" class="div_msg">
+                <textarea id="accmsg" class="txt_msg" rows="10" cols="75"></textarea>
+            </div>
+
+            <div id="txt_send" class="div_msg">
+                <textarea id="send" class="txt_msg" rows="10" cols="75"></textarea>
+            </div>
+            <div style="float: right; margin: 0px 5px 0px 0px;">
+                <input type="button" id="btn_sendmsg" value="发送" />
+            </div>
+        </div>
+
+    </div>
+    <div class="div_div">
+        <div id="main_right">
+            <p>在线用户</p>
+            <div id="user_list">
+                @if (users != null)
+                {
+                    for (int i = 1; i < users.Length; i++)
+                    {
+                        <p><a>@users[i]</a></p>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    window.onbeforeunload = function () {
+        sendMessage("delete");
+    }
+
+    $(function () {
+        $("#btn_sendmsg").click(function () {
+            sendMessage($("#send").val());
+            var txt = $("#accmsg");
+
+            txt.text(txt.text() + "\n" + "我:" + $("#send").val());
+            $("#send").val("");
+        });
+
+        setInterval(getMessage, 2000);
+    });
+
+    function sendMessage(msg) {
+        $.ajax({
+            url: "/Home/sendMsg",
+            data: { msg: msg },
+            dateType: "text",
+            type: "get",
+            success: function (data) {
+                if (data != "ok") {
+                    alert("您已断线!请重新连接!");
+                }
+            }
+        });
+    }
+
+    function getMessage() {
+        $.ajax({
+            url: "/Home/GetMsg",
+            data: {},
+            dateType: "text",
+            type: "get",
+            success: function (data) {
+                if(data != ""){
+                    var txt = $("#accmsg");
+
+                    var s = data.split(":");
+
+                    if (s[0] == "adduser") {
+                        txt.text(txt.text() + "\n" + s[1] + "连接...");
+                        $("#user_list").append($("<p><a>" + s[1] + "</a></p>"));
+                    }
+                    else if (s[0] == "delete") {
+                        txt.text(txt.text() + "\n" + s[1] + "离开...");
+                        $("#user_list p a:contains(" + s[1] + ")").remove();
+                    }
+                    else {
+                        txt.text(txt.text() + "\n" + data);
+                    }
+                }
+            }
+        });
+    }
+</script>

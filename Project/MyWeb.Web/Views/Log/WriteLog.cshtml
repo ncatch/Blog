@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "写日志";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<link href="~/Content/css/ty.css" rel="stylesheet" />
+<h1 class="t_nav"><span id="writelog">记忆着曾经那些点点滴滴的往事！</span><a href="/Home/Index" class="n1">网站首页</a><a href="" class="n2">书写青春</a></h1>
+<div id="writeText">
+    <div>
+        <textarea rows="15" cols="140" id="logcontent"></textarea>
+    </div>
+    <div style="float:right;margin-top:15px;">
+        <input type="button" id="btn_save" value="保存" />
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $("#btn_save").click(function () {
+            if ($("#logcontent").val().trim() != "") {
+                if(pwd = prompt("请输入密码(注:此密码不保存,请妥善保管!):")){
+                    $.post("/Log/WriteLog", { content: $("#logcontent").val(), pwd: pwd }, function (data) {
+                        if (data == "ok") {
+                            alert("保存成功!");
+                            window.location.href = "/Log/Index";
+                        }
+                        else {
+                            alert(data);
+                        }
+                    });
+                }
+            }
+            else {
+                alert("没有内容不能保存哦~");
+            }
+        });
+    });
+</script>

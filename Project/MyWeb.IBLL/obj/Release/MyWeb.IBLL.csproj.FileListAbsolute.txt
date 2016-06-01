@@ -1,0 +1,10 @@
+G:\testProject\MyWeb\MyWeb.IBLL\bin\Release\MyWeb.IBLL.dll
+G:\testProject\MyWeb\MyWeb.IBLL\bin\Release\MyWeb.IBLL.pdb
+G:\testProject\MyWeb\MyWeb.IBLL\bin\Release\MyWeb.Model.dll
+G:\testProject\MyWeb\MyWeb.IBLL\bin\Release\EntityFramework.dll
+G:\testProject\MyWeb\MyWeb.IBLL\bin\Release\MyWeb.Model.pdb
+G:\testProject\MyWeb\MyWeb.IBLL\bin\Release\EntityFramework.xml
+G:\testProject\MyWeb\MyWeb.IBLL\bin\Release\zh-Hans\EntityFramework.resources.dll
+G:\testProject\MyWeb\MyWeb.IBLL\obj\Release\MyWeb.IBLL.csprojResolveAssemblyReference.cache
+G:\testProject\MyWeb\MyWeb.IBLL\obj\Release\MyWeb.IBLL.dll
+G:\testProject\MyWeb\MyWeb.IBLL\obj\Release\MyWeb.IBLL.pdb

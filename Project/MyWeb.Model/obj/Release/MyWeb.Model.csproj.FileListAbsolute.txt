@@ -1,0 +1,12 @@
+G:\testProject\MyWeb\MyWeb.Model\bin\Release\MyWeb.Model.dll.config
+G:\testProject\MyWeb\MyWeb.Model\bin\Release\MyWeb.Model.dll
+G:\testProject\MyWeb\MyWeb.Model\bin\Release\MyWeb.Model.pdb
+G:\testProject\MyWeb\MyWeb.Model\bin\Release\EntityFramework.dll
+G:\testProject\MyWeb\MyWeb.Model\bin\Release\EntityFramework.SqlServer.dll
+G:\testProject\MyWeb\MyWeb.Model\bin\Release\EntityFramework.xml
+G:\testProject\MyWeb\MyWeb.Model\bin\Release\EntityFramework.SqlServer.xml
+G:\testProject\MyWeb\MyWeb.Model\bin\Release\zh-Hans\EntityFramework.resources.dll
+G:\testProject\MyWeb\MyWeb.Model\bin\Release\zh-Hans\EntityFramework.SqlServer.resources.dll
+G:\testProject\MyWeb\MyWeb.Model\obj\Release\MyWeb.Model.dll
+G:\testProject\MyWeb\MyWeb.Model\obj\Release\MyWeb.Model.pdb
+G:\testProject\MyWeb\MyWeb.Model\obj\Release\MyWeb.Model.csprojResolveAssemblyReference.cache

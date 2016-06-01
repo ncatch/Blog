@@ -1,0 +1,15 @@
+﻿@{
+    Layout = null;
+} 
+@using MyWeb.Model;
+@{
+    UserInfo uf = ViewBag.User as UserInfo;
+}
+<h2>关于<span>博主</span></h2>
+<img src="~/Content/images/my.jpg" width="200" height="200" alt="博主">
+<ul>
+    <li>博主：@uf.NickName</li>
+    <li>职业: @uf.Job</li>
+    <li>简介：@uf.About</li>
+    <li></li>
+</ul>

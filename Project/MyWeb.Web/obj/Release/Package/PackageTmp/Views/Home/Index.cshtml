@@ -1,0 +1,129 @@
+﻿@{
+    ViewBag.Title = "主页";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using MyWeb.Model;
+
+<!DOCTYPE html>
+@{
+    UserInfo uf = ViewBag.User as UserInfo;
+}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style type="text/css">
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #bar {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            height: 2px;
+            width: 10px;
+            background-color: orange;
+            z-index: 1000;
+
+        }
+        #bar_right {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            z-index:1001;
+            width:10px;
+            height: 3px;
+            background-color: orange;
+            z-index: 1000;
+            -webkit-backface-visibility: hidden;
+            -webkit-filter: blur(3px);
+            -moz-filter: blur(3px);
+            -o-filter: blur(3px);
+            -ms-filter: blur(3px);
+            filter: blur(3px);
+        }
+    </style>
+</head>
+<body>
+    <div id="bar"></div>
+    <div id="bar_right"></div>
+    <div class="banner">
+        <section class="box">
+            <ul class="texts">
+                <p class="p1">纪念我们:</p>
+                <p class="p2">终将逝去的青春</p>
+                <p class="p3">By:@uf.NickName</p>
+            </ul>
+        </section>
+    </div>
+    <article>
+        <h2 class="title_tj">
+            <p>博主<span>推荐</span></p>
+        </h2>
+        <div id="bloglist" class="bloglist left">
+        </div>
+        <aside class="right">
+            <div id="My" class="my">
+                
+            </div>
+            <div id="Shar" class="bdsharebuttonbox">
+                
+            </div>
+    </article>
+
+    <script type="text/javascript">
+        $(window).scroll(function () {
+            $("#bar").css("top", $(window).scrollTop());
+        });
+
+        $("#bar").width(@ViewBag.Width);
+        $("#bar_right").css("left",@ViewBag.Width);
+
+        var widths = 0;
+        var maxwidth = $("body").width() - $("#bar").width() - 20;
+
+        big();//使用前面闪烁
+
+        getHtml("/Home/BlogList", "bloglist");
+        getHtml("/Home/My", "My");
+
+        function getHtml(url, id) {
+            $.post(url, "", function (data) {
+                widths += maxwidth / 2;
+
+                $("#bar_right").animate();
+                $("#bar").animate();
+
+                $("#bar").animate({ width: $("#bar").width()+ widths + "px" }, 1000, function () {
+                    if ($("#bar").width() >= maxwidth) {
+                        $("#bar").animate({ opacity: "0.5" }, function () {
+                            $("#bar_right").remove();
+                            $("#bar").animate({ opacity: "0" }, function () {
+                                $("#bar").remove();
+                            });
+                        });
+                    }
+                });
+
+                debugger;
+                $("#bar_right").animate({ left:parseInt($("#bar_right").css("left").split("px")[0]) + widths - 97 + "px" }, 1000);
+                
+                $("#bar_right").width("100px");
+
+                $("#"+id).html(data);
+            });
+        }
+
+        function big() {
+            $("#bar_right").animate({ opacity: "0.2" }, 500, small);
+        }
+
+        function small() {
+            $("#bar_right").animate({ opacity: "1" }, 500, big);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "关于";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using MyWeb.Model;
+
+@{
+    UserInfo uf = ViewBag.User as UserInfo;
+}
+<link href="~/Content/css/ty.css" rel="stylesheet" />
+<article class="aboutcon">
+    <h1 class="t_nav"><span>像“草根”一样，紧贴着地面，低调的存在，冬去春来，枯荣无恙。</span><a href="/Home/Index" class="n1">网站首页</a><a href="" class="n2">关于我</a></h1>
+    <div class="about left">
+        <h2>About me</h2>
+        <div id="me_text">
+            Go Go Go!!!
+        </div>
+
+    </div>
+    <aside class="right">
+        <div class="about_c">
+            <p>网名：<span>@uf.NickName</span></p>
+            <p>姓名：@uf.RealName</p>
+            <p>星座：@uf.Types.Value</p>
+            <p>现居：@uf.Address</p>
+            <p>喜欢的书：《@uf.FavoriteBook》..</p>
+            <p>喜欢的音乐：《@uf.FavoriteMusic》..</p>
+            <div class="about_qq">
+                <span>联系博主：</span><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=978094287&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:978094287:41" alt="点击这里给我发消息" title="点击这里给我发消息" /></a>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </aside>
+</article>
+
+

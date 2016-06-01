@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "日志";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using MyWeb.Model;
+@{
+    List<Log> list = ViewBag.Logs as List<Log>;
+}
+<link href="~/Content/css/ty.css" rel="stylesheet" />
+<div class="moodlist">
+    <h1 class="t_nav"><span id="writelog">记忆着曾经那些点点滴滴的往事！</span><a href="/Home/Index" class="n1">网站首页</a><a href="/Log/Index" class="n2">个人日记</a></h1>
+    <div class="bloglist">
+        @foreach (Log log in list)
+        {
+            <ul class="arrow_box Transparent">
+                <div class="sy">
+                    <p class="log" id="@log.id">
+                        @{
+                        if (log.Content.Length > 180)
+                        {
+                             @log.Content.Substring(0,180)@("...")
+                        }
+                        else
+                        {
+                            @log.Content
+                        }
+                    }
+                    </p>
+                </div>
+                <span class="dateview">@log.AddDate</span>
+            </ul>
+        }
+    </div>
+    <div id="page">
+        当前 @ViewBag.Page 页,共 @ViewBag.MaxPage 页
+    </div>
+</div>
+<script src="~/Scripts/js/Effects.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#writelog").click(function () {
+            window.location.href = "/Log/WriteLog";
+        });
+
+        $(".log").click(function () {
+            var pwd = prompt("请输入密码:");
+
+            var p = $(this);
+
+            if (pwd.trim() != "") {
+                $.post("/Log/ReadLog", { logid: $(this).attr("id"), pwd: pwd }, function (data) {
+                    p.text(data);
+                })
+            }
+        });
+        onShow($("ul[class='arrow_box Transparent']"), 0);
+    });
+</script>

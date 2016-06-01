@@ -1,0 +1,118 @@
+﻿@{
+    Layout = null;
+    ViewBag.Title = "Login";
+}
+
+<link href="~/Content/css/login.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-2.2.3.min.js"></script>
+<script src="~/Scripts/js/login.js"></script>
+<style type="text/css">
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    #bar {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        height: 2px;
+        width: 0px;
+        background-color: orange;
+        z-index: 1000;
+    }
+
+    #bar_right {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        z-index: 1001;
+        width: 0px;
+        height: 3px;
+        background-color: orange;
+        z-index: 1000;
+        -webkit-backface-visibility: hidden;
+        -webkit-filter: blur(3px);
+        -moz-filter: blur(3px);
+        -o-filter: blur(3px);
+        -ms-filter: blur(3px);
+        filter: blur(3px);
+    }
+</style>
+
+<div id="bar"></div>
+<div id="bar_right"></div>
+
+<div id="bg"></div>
+<div class="login">
+    <div class="header">
+        会员登录
+    </div>
+    <div class="web_qr_login" id="web_qr_login" style="display: block;">
+        <div style="height:1px;text-align:center;margin-top:10px;">
+            <label id="Login_Tip" style="font-size:16px;color:white;opacity:0.8;">@ViewBag.Tip</label>
+        </div>
+        <!--登录-->
+        <div class="web_login" id="web_login">
+            <div class="login-box">
+                <div class="login_form">
+                    <form name="loginform" accept-charset="utf-8" id="login_form" class="loginForm" method="post">
+                        <input type="hidden" name="did" value="0" />
+                        <input type="hidden" name="to" value="log" />
+                        <div class="uinArea" id="uinArea">
+                            <label class="input-tips" for="u"></label>
+                            <div class="inputOuter" id="uArea">
+
+                                <input type="text" id="username" value="用户名" name="UserLoginName" text="用户名" class="inputstyle" />
+                            </div>
+                        </div>
+                        <div class="pwdArea" id="pwdArea">
+                            <label class="input-tips" for="p"></label>
+                            <div class="inputOuter" id="pArea">
+
+                                <input type="text" id="userpwd" value="密码" title="密码" name="UserLoginPwd" text="密码" class="inputstyle" />
+                            </div>
+                        </div>
+
+                        <div style="padding-left:50px;margin-top:20px;"><input type="button" value="登 录"  id="btn_login" style="width:150px;" class="button_blue" /></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $(window).scroll(function () {
+            $("#bar").css("top", $(window).scrollTop());
+        });
+    });
+    //var browser = {
+    //    versions: function () {
+    //        var u = navigator.userAgent, app = navigator.appVersion;
+    //        return {         //移动终端浏览器版本信息
+    //            trident: u.indexOf('Trident') > -1, //IE内核
+    //            presto: u.indexOf('Presto') > -1, //opera内核
+    //            webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+    //            gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+    //            mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+    //            ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+    //            android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或uc浏览器
+    //            iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+    //            iPad: u.indexOf('iPad') > -1, //是否iPad
+    //            webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
+    //        };
+    //    }(),
+    //    language: (navigator.browserLanguage || navigator.language).toLowerCase()
+    //}
+    //var html = [];
+    //html[html.length] = "语言版本: " + browser.language;
+    //html[html.length] = " 是否为移动终端: " + browser.versions.mobile + "<br/>";
+    //html[html.length] = " ios终端: " + browser.versions.ios + "<br/>";
+    //html[html.length] = " android终端: " + browser.versions.android + "<br/>";
+    //html[html.length] = " 是否为iPhone: " + browser.versions.iPhone + "<br/>";
+    //html[html.length] = " 是否iPad: " + browser.versions.iPad + "<br/>";
+    //html[html.length] = navigator.userAgent + "<br/>";
+
+    //alert(html);
+</script>

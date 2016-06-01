@@ -1,0 +1,64 @@
+﻿*{
+    margin:0px;
+    padding:0px;
+}
+.inputstyle:focus {outline: none} 
+
+#bg{
+    position:absolute;
+    z-index:-100;
+    float:left;
+    width:100%;
+    height:100%;
+    background-image: url('/Content/images/Logo_bg.jpg');
+    background-size:100%;
+    -webkit-filter: blur(10px); 
+       -moz-filter: blur(10px);
+        -ms-filter: blur(10px);   
+            filter: blur(10px);  
+    filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false); /* IE6~IE9 */
+}
+
+.login{
+    margin:auto;
+    width:200px;
+    color:white;
+    width:250px;
+    padding:50px;
+    border:1px solid gray;
+    position:relative;
+    top:150px;
+}
+
+.inputstyle{
+    margin-top:30px;
+    color:white;
+    padding:10px;
+    width:250px;
+    height:35px;
+    border:1px solid gray;
+    BACKGROUND: none transparent scroll repeat 10% 10%;
+    -moz-border-radius: 5px;      /* Gecko browsers */
+    -webkit-border-radius: 5px;   /* Webkit browsers */
+    border-radius:5px;            /* W3C syntax */
+    opacity:0.9;
+    font-size:18px;
+}
+
+.button_blue{
+    cursor:hand;
+    color:white;
+    font-weight:600;
+    -moz-border-radius: 5px;      /* Gecko browsers */
+    -webkit-border-radius: 5px;   /* Webkit browsers */
+    border-radius:5px;            /* W3C syntax */
+    background-color:#F15115;
+    border:none;
+    height:35px;
+}    
+
+.header{
+    font-size:24px;
+    font-weight:700;
+    text-align:center;
+}
