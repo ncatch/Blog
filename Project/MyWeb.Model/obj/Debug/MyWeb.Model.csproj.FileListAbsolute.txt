@@ -21,3 +21,16 @@ G:\testProject\MyWeb\MyWeb.Model\obj\Debug\MyWeb.Model.dll
 G:\testProject\MyWeb\MyWeb.Model\obj\Debug\MyWeb.Model.pdb
 G:\testProject\MyWeb\MyWeb.Model\bin\Debug\MySql.Data.dll
 G:\testProject\MyWeb\MyWeb.Model\bin\Debug\MySql.Data.Entity.EF6.dll
+E:\Blog\Project\MyWeb.Model\bin\Debug\MyWeb.Model.dll.config
+E:\Blog\Project\MyWeb.Model\bin\Debug\MyWeb.Model.dll
+E:\Blog\Project\MyWeb.Model\bin\Debug\MyWeb.Model.pdb
+E:\Blog\Project\MyWeb.Model\bin\Debug\EntityFramework.dll
+E:\Blog\Project\MyWeb.Model\bin\Debug\EntityFramework.SqlServer.dll
+E:\Blog\Project\MyWeb.Model\bin\Debug\MySql.Data.dll
+E:\Blog\Project\MyWeb.Model\bin\Debug\MySql.Data.Entity.EF6.dll
+E:\Blog\Project\MyWeb.Model\bin\Debug\EntityFramework.SqlServer.xml
+E:\Blog\Project\MyWeb.Model\bin\Debug\zh-Hans\EntityFramework.resources.dll
+E:\Blog\Project\MyWeb.Model\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
+E:\Blog\Project\MyWeb.Model\obj\Debug\MyWeb.Model.csprojResolveAssemblyReference.cache
+E:\Blog\Project\MyWeb.Model\obj\Debug\MyWeb.Model.dll
+E:\Blog\Project\MyWeb.Model\obj\Debug\MyWeb.Model.pdb

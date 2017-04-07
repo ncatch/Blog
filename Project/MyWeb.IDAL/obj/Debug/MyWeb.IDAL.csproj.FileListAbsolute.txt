@@ -17,3 +17,12 @@ G:\testProject\MyWeb\MyWeb.IDAL\bin\Debug\zh-Hans\EntityFramework.resources.dll
 G:\testProject\MyWeb\MyWeb.IDAL\obj\Debug\MyWeb.IDAL.csprojResolveAssemblyReference.cache
 G:\testProject\MyWeb\MyWeb.IDAL\obj\Debug\MyWeb.IDAL.dll
 G:\testProject\MyWeb\MyWeb.IDAL\obj\Debug\MyWeb.IDAL.pdb
+E:\Blog\Project\MyWeb.IDAL\bin\Debug\MyWeb.IDAL.dll
+E:\Blog\Project\MyWeb.IDAL\bin\Debug\MyWeb.IDAL.pdb
+E:\Blog\Project\MyWeb.IDAL\bin\Debug\MyWeb.Model.dll
+E:\Blog\Project\MyWeb.IDAL\bin\Debug\EntityFramework.dll
+E:\Blog\Project\MyWeb.IDAL\bin\Debug\MyWeb.Model.pdb
+E:\Blog\Project\MyWeb.IDAL\bin\Debug\zh-Hans\EntityFramework.resources.dll
+E:\Blog\Project\MyWeb.IDAL\obj\Debug\MyWeb.IDAL.csprojResolveAssemblyReference.cache
+E:\Blog\Project\MyWeb.IDAL\obj\Debug\MyWeb.IDAL.dll
+E:\Blog\Project\MyWeb.IDAL\obj\Debug\MyWeb.IDAL.pdb
